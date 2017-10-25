@@ -16,6 +16,7 @@ import Chartist from 'chartist'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/sass/paper-dashboard.scss'
 import 'es6-promise/auto'
+import axios from 'axios'
 
 // plugin setup
 Vue.use(VueRouter)
@@ -37,6 +38,7 @@ Object.defineProperty(Vue.prototype, '$Chartist', {
   }
 })
 
+Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
