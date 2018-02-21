@@ -5,18 +5,16 @@
     </div>
     <div class="content">
       <div class="author">
-        <img class="avatar border-white" src="static/img/faces/face-2.jpg" alt="...">
-        <h4 class="title">Chet Faker
+        <img class="avatar border-white" src="static/img/faces/kb.png" alt="...">
+        <h4 class="title">{{$language('profile','user_name')}}
           <br>
           <a href="#">
-            <small>@chetfaker</small>
+            <small>@{{$language('profile','user_role')}}</small>
           </a>
         </h4>
       </div>
       <p class="description text-center">
-        "I like the way you work it
-        <br> No diggity
-        <br> I wanna bag it up"
+        {{$language('profile','user_email')}}
       </p>
     </div>
     <hr>

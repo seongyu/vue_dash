@@ -11,9 +11,9 @@
       <div class="logo">
         <a href="#" class="simple-text">
             <div class="logo-img">
-                <img src="static/img/vue-logo.png" alt="">
+                <img src="static/img/logo.png" style="max-width:34px;" alt="">
             </div>
-          Paper Dashboard
+            {{$language('title')}}
         </a>
       </div>
       <slot>
@@ -30,9 +30,18 @@
           </a>
         </router-link>
       </ul>
-      <moving-arrow :move-y="arrowMovePx">
-
-      </moving-arrow>
+      <moving-arrow :move-y="arrowMovePx"></moving-arrow>
+      <!-- <div class="custom-settingbox">
+        <div class="btn-group">
+          <button class="btn" @click="changeBg('white')">A</button>
+          <button class="btn" @click="changeBg('black')">B</button>
+        </div>
+        <div class="btn-group">
+          <button class="btn" @click="changeBt('info')">D</button>
+          <button class="btn" @click="changeBt('danger')">E</button>
+          <button class="btn" @click="changeBt('warning')">C</button>
+        </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -114,6 +123,12 @@
           }
           return found
         })
+      },
+      changeBg (name) {
+        this.$props.backgroundColor = name
+      },
+      changeBt (name) {
+        this.$props.activeColor = name
       }
     },
     mounted () {
@@ -128,5 +143,8 @@
 
 </script>
 <style>
-
+  .custom-settingbox {
+    position:absolute;
+    bottom:0;
+  }
 </style>

@@ -37,4 +37,9 @@
     top: 95px;
     transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1);
   }
+  @media (max-width: 991px){
+    .moving-arrow {
+    display: none;
+    }
+  }
 </style>

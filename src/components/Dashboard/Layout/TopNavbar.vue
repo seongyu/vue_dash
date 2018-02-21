@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">{{$language('nav_bar', 'title')}}</span>
           <span class="icon-bar bar1"></span>
           <span class="icon-bar bar2"></span>
           <span class="icon-bar bar3"></span>
@@ -11,29 +11,25 @@
         <a class="navbar-brand">{{routeName}}</a>
       </div>
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
+        <!-- <ul class="nav navbar-nav navbar-right">
           <li class="open">
-            <a href="#" class="dropdown-toggle btn-magnify" data-toggle="dropdown">
+            <a href="#/admin/overview" class="dropdown-toggle btn-magnify" data-toggle="dropdown">
               <i class="ti-panel"></i>
-              <p>Stats</p>
+              <p>{{$language('nav_bar', 'stats')}}</p>
             </a>
           </li>
-             <drop-down title="5 Notifications" icon="ti-bell">
-               <li><a href="#">Notification 1</a></li>
-               <li><a href="#">Notification 2</a></li>
-               <li><a href="#">Notification 3</a></li>
-               <li><a href="#">Notification 4</a></li>
-               <li><a href="#">Another notification</a></li>
+             <drop-down :title="$language('nav_bar', 'notifications')" icon="ti-bell">
+               <li v-for="(ls, i) in notiList"><a :href="'#'+ls.link">{{ls.text}} {{i}}</a></li>
              </drop-down>
           <li>
             <a href="#" class="btn-rotate">
               <i class="ti-settings"></i>
               <p>
-                Settings
+                {{$language('nav_bar', 'settings')}}
               </p>
             </a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>
@@ -48,7 +44,14 @@
     },
     data () {
       return {
-        activeNotifications: false
+        activeNotifications: false,
+        notiList: [
+        { text: 'Notification', link: '/admin/notifications' },
+        { text: 'Notification', link: '/admin/notifications' },
+        { text: 'Notification', link: '/admin/notifications' },
+        { text: 'Notification', link: '/admin/notifications' },
+        { text: 'Notification', link: '/admin/notifications' }
+        ]
       }
     },
     methods: {

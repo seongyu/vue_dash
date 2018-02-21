@@ -5,11 +5,13 @@ import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/Overview.vue'
 import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
-import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
-import Icons from 'src/components/Dashboard/Views/Icons.vue'
+// import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
+import Detail from 'src/components/Dashboard/Views/Detail.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
-import Typography from 'src/components/Dashboard/Views/Typography.vue'
-import TableList from 'src/components/Dashboard/Views/TableList.vue'
+// import Typography from 'src/components/Dashboard/Views/Typography.vue'
+// import TableList from 'src/components/Dashboard/Views/TableList.vue'
+
+import Language from 'src/localize.js'
 
 const routes = [
   {
@@ -24,38 +26,23 @@ const routes = [
     children: [
       {
         path: 'overview',
-        name: 'overview',
+        name: Language('routes', 'overview'),
         component: Overview
       },
       {
         path: 'stats',
-        name: 'stats',
+        name: Language('routes', 'stats'),
         component: UserProfile
       },
       {
-        path: 'notifications',
-        name: 'notifications',
-        component: Notifications
-      },
-      {
-        path: 'icons',
-        name: 'icons',
-        component: Icons
+        path: 'detail',
+        name: Language('routes', 'detail'),
+        component: Detail
       },
       {
         path: 'maps',
-        name: 'maps',
+        name: Language('routes', 'maps'),
         component: Maps
-      },
-      {
-        path: 'typography',
-        name: 'typography',
-        component: Typography
-      },
-      {
-        path: 'table-list',
-        name: 'table-list',
-        component: TableList
       }
     ]
   },

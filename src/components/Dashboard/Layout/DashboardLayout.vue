@@ -3,9 +3,6 @@
     <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
 
     </side-bar>
-    <notifications>
-
-    </notifications>
     <div class="main-panel">
       <top-navbar></top-navbar>
 
@@ -29,6 +26,11 @@
       TopNavbar,
       ContentFooter,
       DashboardContent
+    },
+    data () {
+      return {
+        lang: 'eng'
+      }
     },
     methods: {
       toggleSidebar () {

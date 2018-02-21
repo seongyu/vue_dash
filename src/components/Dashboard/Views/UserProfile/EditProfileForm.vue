@@ -1,31 +1,31 @@
 <template>
   <div class="card">
     <div class="header">
-      <h4 class="title">Edit Profile</h4>
+      <h4 class="title">{{$language('profile','profile_title')}}</h4>
     </div>
     <div class="content">
       <form>
         <div class="row">
           <div class="col-md-5">
             <fg-input type="text"
-                      label="Company"
+                      :label="$language('profile','profile_company')"
                       :disabled="true"
-                      placeholder="Paper dashboard"
+                      :placeholder="$language('profile','profile_company')"
                       v-model="user.company">
             </fg-input>
           </div>
           <div class="col-md-3">
 
             <fg-input type="text"
-                      label="Username"
-                      placeholder="Username"
+                      :label="$language('profile','profile_username')"
+                      :placeholder="$language('profile','profile_username')"
                       v-model="user.username">
             </fg-input>
           </div>
           <div class="col-md-4">
             <fg-input type="email"
-                      label="Username"
-                      placeholder="Email"
+                      :label="$language('profile','profile_email')"
+                      :placeholder="$language('profile','profile_email')"
                       v-model="user.email">
             </fg-input>
           </div>
@@ -34,15 +34,15 @@
         <div class="row">
           <div class="col-md-6">
             <fg-input type="text"
-                      label="First Name"
-                      placeholder="First Name"
+                      :label="$language('profile','profile_firstname')"
+                      :placeholder="$language('profile','profile_firstname')"
                       v-model="user.firstName">
             </fg-input>
           </div>
           <div class="col-md-6">
             <fg-input type="text"
-                      label="Last Name"
-                      placeholder="Last Name"
+                      :label="$language('profile','profile_lastname')"
+                      :placeholder="$language('profile','profile_lastname')"
                       v-model="user.lastName">
             </fg-input>
           </div>
@@ -51,8 +51,8 @@
         <div class="row">
           <div class="col-md-12">
             <fg-input type="text"
-                      label="Address"
-                      placeholder="Home Address"
+                      :label="$language('profile','profile_address')"
+                      :placeholder="$language('profile','profile_address')"
                       v-model="user.address">
             </fg-input>
           </div>
@@ -61,22 +61,22 @@
         <div class="row">
           <div class="col-md-4">
             <fg-input type="text"
-                      label="City"
-                      placeholder="City"
+                      :label="$language('profile','profile_city')"
+                      :placeholder="$language('profile','profile_city')"
                       v-model="user.city">
             </fg-input>
           </div>
           <div class="col-md-4">
             <fg-input type="text"
-                      label="Country"
-                      placeholder="Country"
+                      :label="$language('profile','profile_country')"
+                      :placeholder="$language('profile','profile_country')"
                       v-model="user.country">
             </fg-input>
           </div>
           <div class="col-md-4">
             <fg-input type="number"
-                      label="Postal Code"
-                      placeholder="ZIP Code"
+                      :label="$language('profile','profile_postcode')"
+                      :placeholder="$language('profile','profile_postcode')"
                       v-model="user.postalCode">
             </fg-input>
           </div>
@@ -85,9 +85,9 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label>About Me</label>
+              <label>{{$language('profile','profile_aboutme')}}</label>
               <textarea rows="5" class="form-control border-input"
-                        placeholder="Here can be your description"
+                        :placeholder="$language('profile','profile_aboutme')"
                         v-model="user.aboutMe">
 
               </textarea>
@@ -96,7 +96,7 @@
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-info btn-fill btn-wd" @click.prevent="updateProfile">
-            Update Profile
+            {{$language('profile','profile_update')}}
           </button>
         </div>
         <div class="clearfix"></div>
@@ -105,19 +105,11 @@
   </div>
 </template>
 <script>
+  import Language from 'src/localize.js'
   export default {
     data () {
       return {
-        user: {
-          company: 'Paper Dashboard',
-          username: 'michael23',
-          email: '',
-          lastName: 'Faker',
-          address: 'Melbourne, Australia',
-          city: 'melbourne',
-          postalCode: '',
-          aboutMe: `Oh so, your weak rhyme. You doubt I'll bother, reading into it.I'll probably won't, left to my own devicesBut that's the difference in our opinions.`
-        }
+        user: Language('profile', 'profile_userinfo')
       }
     },
     methods: {
