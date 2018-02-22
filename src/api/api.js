@@ -8,7 +8,7 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 
 const API = {
   q: null,
-  api_url: 'http://localhost:8101/',
+  api_url: 'localhost:8101/',
   promise: function (fn) {
     return new Promise(fn)
   },
