@@ -1,7 +1,7 @@
 <template>
     <div class="card card-map">
       <div class="header">
-        <h4 class="title" id="mapname">{{$language('maps', 'service')}}</h4>
+        <h4 class="title" id="mapname"></h4>
       </div>
       <div class="map">
         <div id="map"></div>
@@ -15,7 +15,7 @@
   // import VueWebsocket from 'vue-websocket'
   // Vue.use(VueWebsocket, 'ws://localhost:30000/')
 
-  // import Language from 'src/localize.js'
+  import Language from 'src/localize.js'
   // import API from 'src/api/api.js'
   // var language = Language()
   var mapOptions = {
@@ -70,12 +70,10 @@
       var loc = null
 
       var id = this.$route.query.id ? this.$route.query.id : null
-
       if (id) {
         loc = sessionStorage.getItem(id)
         loc = JSON.parse(loc)
         myLatlng = new window.google.maps.LatLng(loc.lat, loc.lon)
-
         marker = new window.google.maps.Marker({
           position: myLatlng,
           title: id,
@@ -86,28 +84,29 @@
 
         map.setCenter(myLatlng)
 
-        document.getElementById('mapname').innerHTML = id
+        document.getElementById('mapname').innerHTML = Language('maps', 'mapnameB') + id
       } else {
         for (var i = 0; i < sessionStorage.length; i++) {
           id = sessionStorage.key(i)
-          var item = sessionStorage.getItem(id)
-          loc = JSON.parse(item)
-          if (loc.lat && loc.lon) {
-            myLatlng = new window.google.maps.LatLng(loc.lat, loc.lon)
+          if (id !== 'language' && id !== 'bg') {
+            var item = sessionStorage.getItem(id)
+            loc = JSON.parse(item)
+            if (loc.lat && loc.lon) {
+              myLatlng = new window.google.maps.LatLng(loc.lat, loc.lon)
 
-            marker = new window.google.maps.Marker({
-              position: myLatlng,
-              title: id,
-              animation: window.google.maps.Animation.BOUNCE
-            })
+              marker = new window.google.maps.Marker({
+                position: myLatlng,
+                title: id,
+                animation: window.google.maps.Animation.BOUNCE
+              })
 
-            marker.setMap(map)
-
-            map.setCenter(myLatlng)
+              marker.setMap(map)
+              map.setCenter(myLatlng)
+            }
           }
         }
         map.setZoom(12)
-        document.getElementById('mapname').innerHTML = 'Devices Location'
+        document.getElementById('mapname').innerHTML = Language('maps', 'mapnameA')
       }
 
       // var newloc = function (lati, long) {
@@ -127,6 +126,12 @@
       //   newloc(item.msg.lati, item.msg.long)
       // }
       // navigator.geolocation.getCurrentPosition(newloc)
+    },
+    watch: {
+      $route: function (newR, oldR, next) {
+        console.log(next)
+        location.reload()
+      }
     }
   }
 

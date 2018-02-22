@@ -1,5 +1,5 @@
 const language = {
-  location: 'eng',
+  location: sessionStorage.getItem('language') ? sessionStorage.getItem('language') : 'eng',
   title: {
     eng: 'DataAlliance',
     kor: '데이터얼라이언스'
@@ -233,13 +233,13 @@ const language = {
     }
   },
   maps: {
-    google_maps: {
-      eng: 'Google Maps',
-      kor: '구글 지도'
+    mapnameA: {
+      eng: 'Devices Location',
+      kor: '장치 위치정보'
     },
-    service: {
-      eng: 'NMS Device Location Service (service not operating)',
-      kor: 'NMS 장치 위치 서비스 (미지원)'
+    mapnameB: {
+      eng: 'Device Name : ',
+      kor: '장치명 : '
     }
   },
   overview: {
@@ -556,6 +556,12 @@ const language = {
 
 const Language = function (n1, n2, n3) {
   var name = ''
+  if (n1 === 'set') {
+    language.location = n2
+    sessionStorage.setItem('language', n2)
+    location.reload()
+    return null
+  }
   if (n1 == null && n2 == null) {
     name = n3 == null ? language['location'] : language[n3]
   } else {

@@ -9,7 +9,7 @@
     <!-- -->
     <div class="sidebar-wrapper" id="style-3">
       <div class="logo">
-        <a href="#" class="simple-text">
+        <a href="#/" class="simple-text">
             <div class="logo-img">
                 <img src="static/img/logo.png" style="max-width:34px;" alt="">
             </div>
@@ -31,17 +31,16 @@
         </router-link>
       </ul>
       <moving-arrow :move-y="arrowMovePx"></moving-arrow>
-      <!-- <div class="custom-settingbox">
-        <div class="btn-group">
-          <button class="btn" @click="changeBg('white')">A</button>
-          <button class="btn" @click="changeBg('black')">B</button>
+      <div class="custom-settingbox text-center">
+        <div class="btn-group custom-bottom">
+          <button class="btn" @click="changeLng('eng')">English</button>
+          <button class="btn" @click="changeLng('kor')">Korean</button>
         </div>
-        <div class="btn-group">
-          <button class="btn" @click="changeBt('info')">D</button>
-          <button class="btn" @click="changeBt('danger')">E</button>
-          <button class="btn" @click="changeBt('warning')">C</button>
+        <div class="btn-group custom-bottom">
+          <button class="btn" @click="changeBg('white')">White</button>
+          <button class="btn" @click="changeBg('black')">Black</button>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +58,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'black',
+        default: sessionStorage.getItem('bg') ? sessionStorage.getItem('bg') : 'black',
         validator: (value) => {
           let acceptedValues = ['white', 'black', 'darkblue']
           return acceptedValues.indexOf(value) !== -1
@@ -124,7 +123,11 @@
           return found
         })
       },
+      changeLng (name) {
+        this.$language('set', name)
+      },
       changeBg (name) {
+        sessionStorage.setItem('bg', name)
         this.$props.backgroundColor = name
       },
       changeBt (name) {
@@ -146,5 +149,8 @@
   .custom-settingbox {
     position:absolute;
     bottom:0;
+  }
+  .custom-bottom {
+    margin-bottom:5px;
   }
 </style>
