@@ -22,7 +22,7 @@
                 <button class="btn btn-xs btn-danger" @click="onMap(item)">
                   {{language['map'][location]}}
                 </button>
-                <button class="btn btn-xs btn-success" disabled>
+                <button class="btn btn-xs btn-success" @click="onFlowModal(item)">
                   {{language['flow'][location]}}
                 </button>
               </div>
@@ -70,15 +70,34 @@
           </button>
       </div>
     </modal>
+    <modal v-if="showFlowM" @close="showFlowM = false" text="flow">
+      <h4 class="title" slot="header">
+        {{language['modal']['name'][location]}} : {{target.ogtg}}
+      </h4>
+      <div slot="body">
+        <flow-chart :arr="flowArr" style="with:90%;"></flow-chart>
+      </div>
+      <div slot="footer">
+        <div class="btn-group" style="float:left">
+          <button class="btn btn-sm btn-success" @click="onFlow('day')">{{language['modal']['buttons']['day'][location]}}</button>
+          <button class="btn btn-sm btn-info" @click="onFlow('week')">{{language['modal']['buttons']['week'][location]}}</button>
+          <button class="btn btn-sm btn-danger" @click="onFlow('month')">{{language['modal']['buttons']['month'][location]}}</button>
+        </div>
+        <button class="btn btn-primary" @click="onFlowClose">{{language['modal']['close'][location]}}</button>
+      </div>
+    </modal>
   </div>
 </template>
 <script>
   import Modal from 'components/UIComponents/Modal.vue'
   import Language from 'src/localize.js'
+  import FlowChart from 'components/UIComponents/FlowChart.vue'
+  import API from 'src/api/api.js'
 
   export default {
     components: {
-      Modal
+      Modal,
+      FlowChart
     },
     props: {
       columns: Array,
@@ -95,7 +114,6 @@
       subTitle: {
         type: String,
         default: ''
-
       }
     },
     data () {
@@ -103,7 +121,10 @@
         location: Language(),
         language: Language(null, null, 'cardList'),
         showModal: false,
-        target: {}
+        showFlowM: false,
+        target: {},
+        term: 'day',
+        flowArr: []
       }
     },
     computed: {
@@ -126,14 +147,44 @@
         sessionStorage.setItem(this.target.ogtg, JSON.stringify(loc))
         window.location.href = '#/admin/maps?id=' + this.target.ogtg
       },
+      onFlow (term) {
+        this.$loading(true)
+        var devId = this.target.ogtg
+        API.get_map_as_term(term, devId)
+        .then((result) => {
+          if (result.status !== 200) {
+            alert('ERROR EXPOSE')
+            return null
+          }
+          this.flowArr = result.data
+          this.$loading(false)
+        })
+      },
+      onFlowModal (item) {
+        this.$loading(true)
+        this.target = this.fulldata[item.id - 1]
+        var devId = this.target.ogtg
+        API.get_map_as_term(this.term, devId)
+        .then((result) => {
+          if (result.status !== 200) {
+            alert('ERROR EXPOSE')
+            return null
+          }
+          this.flowArr = result.data
+          this.showFlowM = true
+          this.$loading(false)
+        })
+      },
+      onFlowClose () {
+        document.body.setAttribute('style', 'overflow-y:scroll')
+        this.showFlowM = false
+      },
       modalCloseClick () {
         document.body.setAttribute('style', 'overflow-y:scroll')
         this.showModal = false
       }
     }
   }
-
 </script>
 <style>
-
 </style>

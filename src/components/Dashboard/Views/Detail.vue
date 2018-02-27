@@ -1,3 +1,4 @@
+
 <template>
     <div class="row">
       <div class="col-md-12">
@@ -11,7 +12,6 @@
   import CardList from 'components/UIComponents/CardList.vue'
   import Language from 'src/localize.js'
   import API from 'src/api/api.js'
-
   const listColumns = Language('detail_list', 'columns')
 
   export default {
@@ -30,11 +30,11 @@
       }
     },
     mounted: function () {
+      this.$loading(true)
       var idx = this.$route.query.idx
       if (!idx) {
         window.history.back()
       }
-
       var moment = this.moment
       API.get_device_list()
       .then((result) => {
@@ -52,15 +52,14 @@
             target: rtn.rcid,
             last_udt: moment(rtn.tms).format('YYYY-MM-DD HH:mm:ss')
           }
-
           items.push(item)
         }
         this.table.tabledata = items
         this.table.fulldata = result.data
+        this.$loading(false)
       })
     }
   }
 </script>
 <style>
-
 </style>

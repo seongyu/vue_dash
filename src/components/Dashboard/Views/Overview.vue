@@ -68,7 +68,6 @@
 
     <!--Charts-->
     <!-- <div class="row">
-
       <div class="col-xs-12">
         <chart-card :chart-data="usersChart.data" :chart-options="usersChart.options">
           <h4 class="title" slot="title">{{language['userChart']['title'][location]}}</h4>
@@ -82,7 +81,6 @@
           </div>
         </chart-card>
       </div>
-
       <div class="col-md-6 col-xs-12">
         <chart-card :chart-data="preferencesChart.data"  chart-type="Pie">
           <h4 class="title" slot="title">{{language['emailStatistics']['title'][location]}}</h4>
@@ -96,7 +94,6 @@
           </div>
         </chart-card>
       </div>
-
       <div class="col-md-6 col-xs-12">
         <chart-card :chart-data="activityChart.data" :chart-options="activityChart.options">
           <h4 class="title" slot="title">{{language['sales']['title'][location]}}</h4>
@@ -203,7 +200,6 @@
   import Modal from 'components/UIComponents/Modal.vue'
   import Language from 'src/localize.js'
   // import API from 'src/api/api.js'
-
   var location = Language()
   export default {
     components: {
@@ -227,7 +223,6 @@
       //   if (rtn.status !== 200) {
       //     return null
       //   }
-
       //   var promiseSet = []
       //   for (var i in rtn.data) {
       //     var q = new Promise(function (resolve, reject) {
@@ -241,14 +236,12 @@
       //         sensors: dt.sensors,
       //         timestamp: moment(dt.timestamp).format('YYYY-MM-DD HH:mm:ss')
       //       }
-
       //       API.get_device_status(dt.device_id)
       //       .then((rtn) => {
       //         if (rtn.status !== 200 || rtn.data.length <= 0) {
       //           resolve(newData)
       //           return null
       //         }
-
       //         var data = rtn.data[0]
       //         newData.cpu = data.cpu
       //         newData.cpu_info = data.cpu_info
@@ -259,13 +252,11 @@
       //         newData.disk_usage = data.disk_usage
       //         newData.boot = data.boot
       //         newData.last_status = moment(data.timestamp).format('YYYY-MM-DD HH:mm:ss')
-
       //         resolve(newData)
       //       })
       //     })
       //     promiseSet.push(q)
       //   }
-
       //   Promise.all(promiseSet)
       //   .then((rtn) => {
       //     this.customCards.data = rtn
@@ -282,15 +273,12 @@
       modalOpenClick (target) {
         // var moment = this.moment
         // var sensors = []
-
         // if (target.sensors.length <= 0) {
         //   document.body.setAttribute('style', 'overflow-y:hidden')
         //   window.scrollTo(0, 0)
         //   this.showModal = true
-
         //   return null
         // }
-
         // var promiseSet = []
         // for (var i in target.sensors) {
         //   var promise = new Promise(function (resolve, reject) {
@@ -304,7 +292,6 @@
         //   })
         //   promiseSet.push(promise)
         // }
-
         // Promise.all(promiseSet)
         // .then((rtn) => {
         //   for (var i in rtn) {
@@ -362,7 +349,6 @@
           disk_usage: 0,
           boot: '',
           timestamp: ''
-
         },
         location: location,
         language: Language(null, null, 'overview'),
@@ -413,12 +399,9 @@
           },
           options: {}
         }
-
       }
     }
   }
-
 </script>
 <style>
-
 </style>

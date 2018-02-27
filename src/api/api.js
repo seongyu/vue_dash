@@ -8,7 +8,8 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 
 const API = {
   q: null,
-  api_url: 'http://35.201.132.176:8101/',
+  // api_url: 'http://35.201.132.176:8101/',
+  api_url: 'http://localhost:8101/',
   promise: function (fn) {
     return new Promise(fn)
   },
@@ -30,6 +31,9 @@ const API = {
   },
   get_stats_as_term: function (t, deviceId) {
     return this.get(this.api_url + 'stat/' + t + '/' + deviceId)
+  },
+  get_map_as_term: function (t, deviceId) {
+    return this.get(this.api_url + 'map/' + t + '/' + deviceId)
   },
   get: function (url) {
     this.q = function (s, j) {

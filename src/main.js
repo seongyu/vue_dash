@@ -20,6 +20,7 @@ import 'es6-promise/auto'
 // custom add library
 import Language from './localize.js'
 import moment from 'moment'
+import flow from '../static/go.cus.min.js'
 // import VueWebsocket from 'vue-websocket'
 // Vue.use(VueWebsocket, 'ws://localhost:30000/')
 // plugin setup
@@ -35,18 +36,13 @@ const router = new VueRouter({
   linkActiveClass: 'active'
 })
 
-// var jsonp = require('jsonp')
-// jsonp('http://13.124.143.112:3000/api/v1/DEVICE_T?format=json', null, function (err, data) {
-//   if (err) {
-//     console.error(err.message)
-//   } else {
-//     var item = JSON.stringify(data)
-//     console.log(item)
-//   }
-// })
-
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://13.124.143.112:3000'
-// axios.defaults.withCredentials = true
+Vue.prototype.$loading = function (isShow) {
+  if (isShow) {
+    document.getElementById('loading').style.visibility = 'visible'
+  } else {
+    document.getElementById('loading').style.visibility = 'hidden'
+  }
+}
 
 Vue.prototype.moment = moment
 Vue.prototype.$language = Language
@@ -56,6 +52,8 @@ Object.defineProperty(Vue.prototype, '$Chartist', {
     return this.$root.Chartist
   }
 })
+
+Object.defineProperty(Vue.prototype, '$Flowchart', { value: flow })
 
 /* eslint-disable no-new */
 new Vue({

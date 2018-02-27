@@ -12,6 +12,9 @@
 
       <content-footer></content-footer>
     </div>
+    <div id="loading" class="loading-layout">
+      <img src="static/img/loader.png" class="custom-loader"/>
+    </div>
   </div>
 </template>
 <style lang="scss">

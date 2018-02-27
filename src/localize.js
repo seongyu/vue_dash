@@ -519,6 +519,20 @@ const language = {
       close: {
         eng: 'Close',
         kor: '닫기'
+      },
+      buttons: {
+        day: {
+          eng: 'DAY',
+          kor: '일'
+        },
+        week: {
+          eng: 'WEEK',
+          kor: '주'
+        },
+        month: {
+          eng: 'MONTH',
+          kor: '월'
+        }
       }
     },
     detail: {
