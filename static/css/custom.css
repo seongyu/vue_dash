@@ -60,9 +60,9 @@
 
 .custom-card-header{
 	text-align: center;
-    font-size: 1.8rem;
-    padding: 1rem;
-    border-bottom: 1px solid #d6d6d6;
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid #d6d6d6;
 }
 
 .custom-card-left{
@@ -82,7 +82,7 @@
 
 
 .loading-layout {
-    visibility:visible;
+    visibility:hidden;
     position: absolute;
     z-index: 19999;
     width: 100%;
