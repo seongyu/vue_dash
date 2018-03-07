@@ -15,6 +15,11 @@ const SidebarStore = {
       path: '/admin/stats'
     },
     {
+      name: Language('side_bar', 'datastatus'),
+      icon: 'ti-user',
+      path: '/admin/datastatus'
+    },
+    {
       name: Language('side_bar', 'maps'),
       icon: 'ti-map',
       path: '/admin/maps'

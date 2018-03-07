@@ -132,15 +132,20 @@
         })
 
         // set id
-        nodeDtArr.sort((a, b) => { return a.text < b.text }).map((it, d) => { it.id = d })
+        nodeDtArr.sort((a, b) => { return a.text > b.text }).map((it, d) => { it.id = d })
 
         // set values
         array.map((it, d, ar) => {
-          var locX = (it.fid.toString().charAt(0) - 1) * xRan
           var fromId = nodeDtArr.find((ita) => { return ita.text === it.sdid }).id
           var toId = nodeDtArr.find((ita) => { return ita.text === it.rcid }).id
 
-          nodeDtArr.map((ita) => { if (ita.text === it.sdid) { ita.locX = locX } })
+          nodeDtArr.map((ita) => {
+            if (ita.text === it.sdid) {
+              ita.locX = (it.fid.toString().charAt(0) - 1) * xRan
+            } else if (ita.text === it.rcid) {
+              ita.locX = (it.fid.toString().charAt(1) - 1) * xRan
+            }
+          })
           linkDtArr.push({from: fromId, to: toId, text: (it.count).toString()})
         })
 

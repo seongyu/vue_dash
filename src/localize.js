@@ -13,9 +13,9 @@ const language = {
       eng: 'stats',
       kor: '통계'
     },
-    tablelist: {
-      eng: 'table list',
-      kor: '테이블 리스트'
+    datastatus: {
+      eng: 'Data Status',
+      kor: '데이터 현황'
     },
     typography: {
       eng: 'typography',
@@ -65,9 +65,9 @@ const language = {
       eng: 'user profile',
       kor: '프로필'
     },
-    tableList: {
-      eng: 'table list',
-      kor: '테이블 리스트'
+    datastatus: {
+      eng: 'Data Status',
+      kor: '데이터 현황'
     },
     typography: {
       eng: 'typography',
