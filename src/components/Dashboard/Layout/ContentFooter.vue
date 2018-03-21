@@ -1,26 +1,27 @@
 <template>
-  <footer class="footer">
+  <footer class="footer footer-color-black">
     <div class="container-fluid">
-      <nav class="pull-left">
-        <ul>
-          <li>
-            <router-link :to="{path:'/admin'}">Dashboard</router-link>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright pull-right">
-        &copy; Coded with
-        <i class="fa fa-heart heart"></i> by
-        <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a>.
-        Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
+      <div class="copyright">
+        &copy; {{fullyear}} <span style="color:#FFFFFF;"> Data </span>
+        <span style="color:#22A1D5;"> Alliance</span>
+        &nbsp;&nbsp; IoT data driven value creators
       </div>
     </div>
   </footer>
 </template>
 <script>
-  export default {}
+  export default {
+    data () {
+      return {
+        fullyear: new Date().getFullYear()
+      }
+    }
+  }
 
 </script>
 <style>
-
+.footer-color-black {
+    background-color: #212120;
+    color: #DDDDDD;
+}
 </style>

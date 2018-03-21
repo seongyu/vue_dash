@@ -11,9 +11,9 @@
       <div class="logo">
         <a href="#" class="simple-text">
             <div class="logo-img">
-                <img src="static/img/vue-logo.png" alt="">
+                <img src="static/img/logo.png" style="max-width:34px;" alt="">
             </div>
-          Paper Dashboard
+            {{$language('title')}}
         </a>
       </div>
       <slot>
@@ -30,9 +30,7 @@
           </a>
         </router-link>
       </ul>
-      <moving-arrow :move-y="arrowMovePx">
-
-      </moving-arrow>
+      <moving-arrow :move-y="arrowMovePx"></moving-arrow>
     </div>
   </div>
 </template>

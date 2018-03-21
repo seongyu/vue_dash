@@ -1,13 +1,13 @@
 <template>
   <div class="card">
     <div class="header">
-      <h4 class="title">Notifications</h4>
+      <h4 class="title">{{$language('notifications','title')}}</h4>
       <p class="category">Custom Vue notifications plugin</p>
     </div>
     <div class="content">
       <div class="row">
         <div class="col-md-6">
-          <h5>Notifications Style</h5>
+          <h5>{{$language('notifications','styles')}}</h5>
           <div class="alert alert-info">
             <span>This is a plain notification</span>
           </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <h5>Notification states</h5>
+          <h5>{{$language('notifications','states')}}</h5>
           <div class="alert alert-info">
             <button type="button" aria-hidden="true" class="close">×</button>
             <span>
@@ -57,7 +57,7 @@
       <div class="places-buttons">
         <div class="row">
           <div class="col-md-9">
-            <h5>Notifications Places
+            <h5>{{$language('notifications','places')}}
               <p class="category">Click to view notifications</p>
             </h5>
           </div>

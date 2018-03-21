@@ -15,7 +15,7 @@
             <div class="col-xs-6">
               {{member.name}}
               <br>
-              <span :class="getStatusClass(member.status)">
+              <span class="text-success">
                 <small>{{member.status}}</small>
               </span>
             </div>
@@ -32,27 +32,12 @@
   </div>
 </template>
 <script>
+  import Language from 'src/localize.js'
   export default {
     data () {
       return {
-        title: 'Team members',
-        members: [
-          {
-            image: 'static/img/faces/face-0.jpg',
-            name: 'Dj Khaled',
-            status: 'Offline'
-          },
-          {
-            image: 'static/img/faces/face-1.jpg',
-            name: 'Creative Tim',
-            status: 'Available'
-          },
-          {
-            image: 'static/img/faces/face-1.jpg',
-            name: 'Flume',
-            status: 'Busy'
-          }
-        ]
+        title: Language('profile', 'member_title'),
+        members: Language('profile', 'members')
       }
     },
     methods: {

@@ -1,7 +1,7 @@
 <template>
     <div class="card card-map">
       <div class="header">
-        <h4 class="title">Google Maps</h4>
+        <h4 class="title">{{$language('maps', 'service')}}</h4>
       </div>
       <div class="map">
         <div id="map"></div>
@@ -9,11 +9,36 @@
     </div>
 </template>
 <script>
+  // import Vue from 'vue'
+  // import VueWebsocket from 'vue-websocket'
+  // Vue.use(VueWebsocket, 'ws://localhost:30000/')
   export default {
+    // methods: {
+    //   get () {
+    //     this.$socket.emit('get', (response) => {
+    //       console.log(response)
+    //     }
+    //     )
+    //   }
+    // },
+    // components: {
+    //   VueWebsocket
+    // },
+    // socket: {
+    //   prefix: '/',
+    //   namespace: '/',
+    //   events: {
+    //     changed (msg) {
+    //       console.log(msg)
+    //     }
+    //   }
+    // },
     mounted () {
-      var myLatlng = new window.google.maps.LatLng(40.748817, -73.985428)
+      // var ws = new WebSocket('ws://localhost:30000')
+
+      var myLatlng = new window.google.maps.LatLng(37.507545, 127.057735)
       var mapOptions = {
-        zoom: 13,
+        zoom: 18,
         center: myLatlng,
         scrollwheel: false, // we disable de scroll over the map, it is a really annoing when you scroll through page
         styles: [{
@@ -60,11 +85,31 @@
 
       var marker = new window.google.maps.Marker({
         position: myLatlng,
-        title: 'Hello World!'
+        title: 'Im Here!',
+        // label: 'G',
+        animation: window.google.maps.Animation.DROP
       })
 
-      // To add the marker to the map, call setMap();
       marker.setMap(map)
+
+      var newloc = function (lati, long) {
+        if (lati && long) {
+          var myLatlng = new window.google.maps.LatLng(lati, long)
+          marker.setPosition(myLatlng)
+          marker.setAnimation(window.google.maps.Animation.BOUNCE)
+          // marker.setLabel('G')
+
+          // marker.setMap(map)
+          map.setCenter(myLatlng)
+        }
+      }
+
+      // ws.onmessage = function (msg) {
+      //   var item = JSON.parse(msg.data)
+      //   newloc(item.msg.lati, item.msg.long)
+      // }
+
+      navigator.geolocation.getCurrentPosition(newloc)
     }
   }
 

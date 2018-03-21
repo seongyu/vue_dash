@@ -17,6 +17,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './assets/sass/paper-dashboard.scss'
 import 'es6-promise/auto'
 
+// custom add library
+import Language from './localize.js'
+import axios from 'axios'
+import moment from 'moment'
+// import VueWebsocket from 'vue-websocket'
+// Vue.use(VueWebsocket, 'ws://localhost:30000/')
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(GlobalComponents)
@@ -30,6 +36,21 @@ const router = new VueRouter({
   linkActiveClass: 'active'
 })
 
+// var jsonp = require('jsonp')
+// jsonp('http://13.124.143.112:3000/api/v1/DEVICE_T?format=json', null, function (err, data) {
+//   if (err) {
+//     console.error(err.message)
+//   } else {
+//     var item = JSON.stringify(data)
+//     console.log(item)
+//   }
+// })
+
+// axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://13.124.143.112:3000'
+// axios.defaults.withCredentials = true
+
+Vue.prototype.moment = moment
+Vue.prototype.$language = Language
 // global library setup
 Object.defineProperty(Vue.prototype, '$Chartist', {
   get () {
