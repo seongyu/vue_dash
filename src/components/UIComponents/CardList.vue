@@ -158,6 +158,7 @@
           }
           this.flowArr = result.data
           this.$loading(false)
+          this._onTrigger(this.flowArr)
         })
       },
       onFlowModal (item) {
@@ -173,7 +174,15 @@
           this.flowArr = result.data
           this.showFlowM = true
           this.$loading(false)
+          this._onTrigger(this.flowArr)
         })
+      },
+      _onTrigger (arr) {
+        if (arr.length === 0) {
+          setTimeout(() => {
+            alert('No Data Exist.\nPlease try it again after change term\n' + 'Now : [' + this.term + ']')
+          }, 300)
+        }
       },
       onFlowClose () {
         document.body.setAttribute('style', 'overflow-y:scroll')

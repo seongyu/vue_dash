@@ -1,6 +1,6 @@
 <template>
   <div id="sample">
-    <div id="myDiagramDiv" style="border: solid 1px black; width: 100%; height: 400px;"></div>
+    <div id="myDiagramDiv" style="border: solid 1px black; width: 100%; height: 350px;"></div>
   </div>
 </template>
 <script>
