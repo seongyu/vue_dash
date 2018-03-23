@@ -19,7 +19,6 @@ import 'es6-promise/auto'
 
 // custom add library
 import Language from './localize.js'
-import axios from 'axios'
 import moment from 'moment'
 // import VueWebsocket from 'vue-websocket'
 // Vue.use(VueWebsocket, 'ws://localhost:30000/')

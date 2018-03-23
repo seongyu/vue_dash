@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div>전송상태 : {{is_ready}}</div>
+    <div>전송상태 : {{is_ready}}
+      <div class="btn-group" style="float:right">
+        <button @click="onStart">start</button>
+        <button @click="onStop">stop</button>
+      </div>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -32,33 +37,49 @@
       }
     },
     mounted: function () {
-      this.ws = new WebSocket('ws://35.201.132.176:9999')
+      this._setWebSocket()
+    },
+    methods: {
+      onStop () {
+        console.log('stop websocket streaming....')
+        this.ws.close()
+      },
+      onStart () {
+        console.log('start websocket streaming....')
+        this._setWebSocket()
+      },
+      _setWebSocket () {
+        this.ws = new WebSocket('ws://localhost:9999')
 
-      this.ws.onopen = () => {
-        this.is_ready = 'Connected'
-      }
-
-      this.ws.onmessage = (msg) => {
-        if (this.datas.length >= 20) {
-          this.datas.pop()
+        this.ws.onopen = () => {
+          this.is_ready = 'Connected'
         }
-        var msgstring = JSON.parse(msg.data)
-        this.datas.unshift({
-          device_id: msgstring.device_id,
-          msg: msgstring
-        })
-      }
 
-      this.ws.onclose = () => {
-        this.is_ready = 'Disconnected'
-      }
+        this.ws.onmessage = (msg) => {
+          if (this.datas.length >= 20) {
+            this.datas.pop()
+          }
+          try {
+            var msgstring = JSON.parse(msg.data)
+            this.datas.unshift({
+              device_id: msgstring.device_id,
+              msg: msgstring
+            })
+          } catch (err) {
+            console.log(err)
+          }
+        }
 
-      this.ws.onerror = (err) => {
-        this.is_ready = err
+        this.ws.onclose = () => {
+          this.is_ready = 'Disconnected'
+        }
+
+        this.ws.onerror = (err) => {
+          this.is_ready = err
+        }
       }
     }
   }
-
 </script>
 <style>
 
