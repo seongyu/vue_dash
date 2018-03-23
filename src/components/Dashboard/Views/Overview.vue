@@ -49,7 +49,7 @@
         this._setWebSocket()
       },
       _setWebSocket () {
-        this.ws = new WebSocket('ws://localhost:9999')
+        this.ws = new WebSocket('ws://35.201.132.176:9999')
 
         this.ws.onopen = () => {
           this.is_ready = 'Connected'
