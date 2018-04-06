@@ -31,10 +31,10 @@
     },
     mounted: function () {
       this.$loading(true)
-      var idx = this.$route.query.idx
-      if (!idx) {
-        window.history.back()
-      }
+      // var idx = this.$route.query.idx
+      // if (!idx) {
+      //   window.history.back()
+      // }
       var moment = this.moment
       API.get_device_list()
       .then((result) => {
