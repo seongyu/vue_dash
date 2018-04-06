@@ -9,11 +9,11 @@ const SidebarStore = {
       icon: 'ti-panel',
       path: '/admin/overview'
     },
-    {
-      name: Language('side_bar', 'profile'),
-      icon: 'ti-user',
-      path: '/admin/stats'
-    },
+    // {
+    //   name: Language('side_bar', 'profile'),
+    //   icon: 'ti-user',
+    //   path: '/admin/stats'
+    // },
     {
       name: Language('side_bar', 'datastatus'),
       icon: 'ti-user',

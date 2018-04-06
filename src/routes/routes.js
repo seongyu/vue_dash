@@ -3,8 +3,8 @@ import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 
 // Admin pages
-import Overview from 'src/components/Dashboard/Views/Overview.vue'
-import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
+// import Overview from 'src/components/Dashboard/Views/Overview.vue'
+// import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
 // import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import Detail from 'src/components/Dashboard/Views/Detail.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
@@ -22,23 +22,23 @@ const routes = [
   {
     path: '/admin',
     component: DashboardLayout,
-    redirect: '/admin/stats',
+    redirect: '/admin/overview',
     children: [
       {
         path: 'overview',
         name: Language('routes', 'overview'),
-        component: Overview
-      },
-      {
-        path: 'stats',
-        name: Language('routes', 'stats'),
-        component: UserProfile
-      },
-      {
-        path: 'detail',
-        name: Language('routes', 'detail'),
         component: Detail
       },
+      // {
+      //   path: 'stats',
+      //   name: Language('routes', 'stats'),
+      //   component: UserProfile
+      // },
+      // {
+      //   path: 'detail',
+      //   name: Language('routes', 'detail'),
+      //   component: Detail
+      // },
       {
         path: 'datastatus',
         name: Language('routes', 'datastatus'),

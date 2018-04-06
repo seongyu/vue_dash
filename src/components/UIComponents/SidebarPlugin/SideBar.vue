@@ -36,10 +36,10 @@
           <button class="btn" @click="changeLng('eng')">English</button>
           <button class="btn" @click="changeLng('kor')">Korean</button>
         </div>
-        <div class="btn-group custom-bottom">
+        <!-- <div class="btn-group custom-bottom">
           <button class="btn" @click="changeBg('white')">White</button>
           <button class="btn" @click="changeBg('black')">Black</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -149,6 +149,7 @@
   .custom-settingbox {
     position:absolute;
     bottom:0;
+    margin-left:15%;
   }
   .custom-bottom {
     margin-bottom:5px;
