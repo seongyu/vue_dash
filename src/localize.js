@@ -202,12 +202,12 @@ const language = {
   },
   detail_list: {
     table_title: {
-      eng: 'DA Apartment',
-      kor: '데이터얼라이언스 아파트'
+      eng: 'Gateway List',
+      kor: '게이트웨이 리스트'
     },
     table_subtitle: {
-      eng: 'C-D, B-dong, A-gu, Seoul',
-      kor: '서울특별시 A구 B동 C-D'
+      eng: 'Supported by DataAlliance, Seoul, Korea',
+      kor: '대한민국, 서울, 데이터얼라이언스 제공'
     },
     columns: {
       'eng': ['INDEX', 'DeviceName', 'Lati/Long', 'Target', 'Last updated', 'Action'],
